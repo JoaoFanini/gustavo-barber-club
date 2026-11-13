@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gustavo Barber Club — Barbearia no Granada, Uberlândia</title>
+<meta name="description" content="Gustavo Barber Club: corte, barba e acabamento na régua no bairro Granada, em Uberlândia. Agende seu horário pelo WhatsApp (34) 99875-2369.">
+<meta name="theme-color" content="#1b1916">
+<link rel="preload" as="image" href="img/hero.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Oswald:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#1b1916;
+    --bg-2:#221f1b;
+    --surface:#2a2621;
+    --line:rgba(243,226,180,.16);
+    --text:#f2ece0;
+    --muted:#a8a092;
+    --gold:#f2df4a;
+    --gold-soft:rgba(242,223,74,.12);
+    --display:'Abril Fatface', Georgia, serif;
+    --sans:'Oswald', 'Arial Narrow', sans-serif;
+    --script:'Pinyon Script', cursive;
+    --max:1120px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body.loading{overflow:hidden}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
+
+  /* ---------- LOADER ---------- */
+  .loader{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;transition:opacity .7s ease, visibility .7s}
+  .loader.out{opacity:0;visibility:hidden}
+  .pole{width:30px;height:118px;border-radius:15px;position:relative;overflow:hidden;
+    background:repeating-linear-gradient(-45deg,#f4f1ea 0 10px,#c8352e 10px 20px,#f4f1ea 20px 30px,#2c56a6 30px 40px);
+    background-size:100% 113px;animation:pole 1.6s linear infinite;box-shadow:inset -6px 0 10px rgba(0,0,0,.35), inset 6px 0 8px rgba(255,255,255,.25)}
+  .pole::before,.pole::after{content:"";position:absolute;left:-4px;right:-4px;height:12px;background:linear-gradient(#d9d2c3,#8f877a);border-radius:6px}
+  .pole::before{top:0}.pole::after{bottom:0}
+  @keyframes pole{to{background-position:0 113px}}
+  .loader-name{font-family:var(--display);font-size:22px;letter-spacing:.14em;text-transform:uppercase}
+  .loader-line{width:180px;height:1px;background:var(--line);position:relative;overflow:hidden}
+  .loader-line::after{content:"";position:absolute;inset:0;background:var(--gold);transform-origin:left;animation:load 1.5s ease forwards}
+  @keyframes load{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+  /* ---------- HEADER ---------- */
+  header{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .35s, border-color .35s;border-bottom:1px solid transparent}
+  header.solid{background:rgba(27,25,22,.92);backdrop-filter:blur(8px);border-color:var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{display:flex;align-items:center;gap:12px;font-family:var(--display);font-size:15px;letter-spacing:.12em;text-transform:uppercase}
+  .brand img{width:38px;height:38px;border-radius:50%;object-fit:cover;border:1px solid var(--line)}
+  .nav-link{font-family:var(--sans);font-weight:500;font-size:13px;letter-spacing:.2em;text-transform:uppercase;position:relative;padding:4px 0}
+  .nav-link::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .3s}
+  .nav-link:hover::after{transform:scaleX(1);transform-origin:left}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding:110px 0 90px}
+  .hero-bg{position:absolute;inset:-4%;background:url(img/hero.jpg) center 30%/cover no-repeat;filter:saturate(.55) contrast(1.05);transform:scale(1.04);will-change:transform}
+  .hero::before{content:"";position:absolute;inset:0;z-index:1;background:
+    radial-gradient(ellipse at 50% 45%, rgba(27,25,22,.55) 0%, rgba(27,25,22,.82) 60%, rgba(27,25,22,.96) 100%),
+    linear-gradient(180deg, rgba(27,25,22,.55) 0%, rgba(27,25,22,.25) 40%, var(--bg) 100%)}
+  .hero-inner{position:relative;z-index:2;max-width:1060px;padding:0 24px}
+  .eyebrow{font-family:var(--sans);font-weight:500;font-size:12px;letter-spacing:.42em;text-transform:uppercase;color:var(--gold)}
+  .hero h1{font-family:var(--display);font-weight:400;text-transform:uppercase;line-height:.92;font-size:clamp(50px,8.6vw,124px);letter-spacing:.005em;margin:22px 0 10px;text-shadow:0 6px 40px rgba(0,0,0,.5)}
+  .hero h1 .l2{display:block}
+  .hero h1 em{font-style:normal;color:var(--gold)}
+  .hero .script{font-family:var(--script);font-size:clamp(30px,3.6vw,46px);color:var(--text);opacity:.92;line-height:1.1;margin-top:-6px}
+  .hero p{max-width:470px;margin:18px auto 0;font-size:16px;color:#d6cfc1;letter-spacing:.02em}
+  .ctas{display:flex;gap:14px;justify-content:center;margin-top:34px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-weight:500;font-size:13px;letter-spacing:.22em;text-transform:uppercase;padding:15px 28px;border:1px solid var(--gold);transition:background .25s,color .25s,transform .25s}
+  .btn-primary{background:var(--gold);color:#1b1916}
+  .btn-primary:hover{background:transparent;color:var(--gold)}
+  .btn-ghost{border-color:rgba(242,236,224,.45);color:var(--text)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+  .badge{position:absolute;z-index:2;right:5.5%;bottom:11%;width:118px;height:118px}
+  .badge svg{width:100%;height:100%;animation:spin 18s linear infinite}
+  .badge-core{position:absolute;inset:30px;border-radius:50%;background:var(--gold);color:#1b1916;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--display);line-height:1}
+  .badge-core b{font-size:22px;font-weight:400}
+  .badge-core small{font-family:var(--sans);font-weight:600;font-size:8px;letter-spacing:.18em;margin-top:3px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .scroll-cue{position:absolute;z-index:2;left:50%;bottom:28px;width:1px;height:46px;background:var(--line);overflow:hidden}
+  .scroll-cue::after{content:"";position:absolute;left:0;top:-46px;width:1px;height:46px;background:var(--gold);animation:cue 2.2s ease-in-out infinite}
+  @keyframes cue{to{top:46px}}
+
+  /* ---------- MARQUEE ---------- */
+  .marquee{background:var(--gold);color:#1b1916;overflow:hidden;border-top:1px solid #1b1916;border-bottom:1px solid #1b1916;position:relative;z-index:3}
+  .marquee-track{display:flex;width:max-content;animation:marq 34s linear infinite}
+  .marquee span{font-family:var(--sans);font-weight:600;font-size:14px;letter-spacing:.3em;text-transform:uppercase;padding:17px 0;white-space:nowrap}
+  .marquee i{font-style:normal;margin:0 30px;opacity:.75}
+  @keyframes marq{to{transform:translateX(-50%)}}
+
+  /* ---------- SECTION BASE ---------- */
+  section.block{padding:120px 0}
+  .head{text-align:center;max-width:760px;margin:0 auto}
+  .rule{display:inline-flex;align-items:center;gap:16px}
+  .rule::before,.rule::after{content:"";width:46px;height:1px;background:var(--gold)}
+  .head .script{display:block;font-family:var(--script);font-size:30px;color:var(--gold);line-height:1;margin:14px 0 6px}
+  h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(36px,5.2vw,62px);line-height:1;letter-spacing:.01em}
+
+  /* ---------- STORY ---------- */
+  .story{background:var(--bg-2)}
+  .story .head .small-script{font-family:var(--script);font-size:24px;color:var(--muted);display:block;margin-bottom:10px}
+  .story-text{max-width:600px;margin:26px auto 0;text-align:center;color:#cfc8ba;font-size:16.5px}
+  .story-text strong{color:var(--gold);font-weight:500}
+  .story-stage{position:relative;max-width:560px;margin:64px auto 0}
+  .dot-mark{position:absolute;left:-90px;top:40%;width:28px;height:28px;border-radius:50%;border:1px solid var(--muted);display:flex;align-items:center;justify-content:center}
+  .dot-mark::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--text)}
+  .polaroid{background:#f6f2ea;padding:14px 14px 0;box-shadow:0 30px 60px rgba(0,0,0,.45);transform:rotate(-2.2deg);transition:transform .5s ease}
+  .polaroid:hover{transform:rotate(0)}
+  .polaroid img{width:100%;aspect-ratio:4/3.4;object-fit:cover;object-position:center 40%;filter:sepia(.12) contrast(1.02)}
+  .polaroid figcaption{font-family:var(--script);color:#2b2722;font-size:25px;text-align:center;padding:12px 8px 16px;line-height:1.15}
+  .polaroid figcaption small{display:block;font-family:var(--sans);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:#7b7368;margin-top:4px}
+  .scissors{display:flex;justify-content:center;margin-top:80px;opacity:.9}
+
+  /* ---------- PRICE LIST ---------- */
+  .prices{background:linear-gradient(180deg,var(--bg) 0%, #24201a 100%)}
+  .list{max-width:760px;margin:56px auto 0;display:flex;flex-direction:column;gap:6px}
+  .item{display:grid;grid-template-columns:64px 1fr auto;gap:22px;align-items:center;padding:18px 20px;border:1px solid transparent;transition:background .3s,border-color .3s}
+  .item:hover{background:rgba(255,255,255,.02);border-color:var(--line)}
+  .item.featured{background:var(--gold-soft);border-color:rgba(242,223,74,.4)}
+  .thumb{width:64px;height:64px;border:3px solid #f2ece0;overflow:hidden;box-shadow:0 6px 14px rgba(0,0,0,.4)}
+  .thumb img{width:100%;height:100%;object-fit:cover;filter:grayscale(.35)}
+  .item h3{font-family:var(--display);font-weight:400;font-size:20px;text-transform:uppercase;letter-spacing:.04em;display:flex;align-items:center;gap:14px}
+  .item h3::after{content:"";flex:1;height:1px;background:var(--line);margin-top:4px}
+  .item p{font-size:14px;color:var(--muted);margin-top:4px}
+  .price{font-family:var(--display);font-size:24px;color:var(--gold);white-space:nowrap}
+  .price small{font-family:var(--sans);font-size:12px;letter-spacing:.1em;margin-right:4px;color:var(--muted)}
+  .list-note{text-align:center;margin-top:38px}
+  .link-under{font-weight:500;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid var(--gold);padding-bottom:4px}
+
+  /* ---------- VISIT ---------- */
+  .visit{background:#25221d}
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:56px}
+  .gallery figure{overflow:hidden;aspect-ratio:4/3}
+  .gallery img{width:100%;height:100%;object-fit:cover;filter:grayscale(.25) contrast(1.05);transition:transform .8s ease, filter .5s}
+  .gallery figure:hover img{transform:scale(1.05);filter:grayscale(0)}
+  .gallery figure:nth-child(1) img{object-position:center 30%}
+  .gallery figure:nth-child(2) img{object-position:center 35%}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+  .card{position:relative;background:#2f2b25;border:1px solid var(--line);padding:46px 26px 34px;text-align:center}
+  .card .ico{position:absolute;top:-19px;left:50%;transform:translateX(-50%);width:38px;height:38px;border-radius:50%;background:var(--gold);color:#1b1916;display:flex;align-items:center;justify-content:center}
+  .card h4{font-family:var(--display);font-weight:400;font-size:19px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px}
+  .card p{font-size:14.5px;color:#cfc8ba;line-height:1.7}
+  .card a.wa{display:inline-block;margin-top:10px;color:var(--gold);font-weight:500;letter-spacing:.06em}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:90px 0 120px;text-align:center;border-top:1px solid var(--line)}
+  .foot-name{font-family:var(--display);text-transform:uppercase;font-size:clamp(34px,6vw,70px);line-height:1;letter-spacing:.02em}
+  .foot-script{font-family:var(--script);font-size:30px;color:var(--gold);margin-top:6px}
+  .foot-meta{margin-top:26px;font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+
+  /* ---------- MOBILE BAR ---------- */
+  .swipe{display:none;text-align:center;margin-top:12px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+  .mbar{display:none;position:fixed;left:12px;right:12px;bottom:12px;z-index:80;gap:8px;transform:translateY(130%);transition:transform .4s ease}
+  .mbar.show{transform:none}
+  .mbar a{flex:1;display:flex;align-items:center;justify-content:center;gap:10px;height:54px;background:var(--gold);color:#1b1916;font-weight:600;font-size:13px;letter-spacing:.18em;text-transform:uppercase;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+  .mbar a.call{flex:0 0 54px;background:#2f2b25;color:var(--gold);border:1px solid var(--line)}
+
+  /* ---------- WATERMARK ---------- */
+  .wm{position:fixed;left:16px;bottom:16px;z-index:90;display:flex;align-items:center;gap:10px;background:rgba(14,14,13,.9);border:1px solid rgba(255,255,255,.12);color:#e9e6df;border-radius:999px;padding:6px 16px 6px 6px;font-family:var(--sans);font-size:12px;font-weight:400;letter-spacing:.04em;backdrop-filter:blur(6px);box-shadow:0 8px 24px rgba(0,0,0,.4);pointer-events:none;user-select:none}
+  .wm svg{width:26px;height:26px;flex:none}
+
+  /* ---------- REVEAL ---------- */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .9s ease, transform .9s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:900px){
+    .dot-mark{display:none}
+    .gallery,.cards{grid-template-columns:1fr 1fr}
+    .gallery figure:nth-child(3){display:none}
+    .cards .card:nth-child(3){grid-column:1/-1}
+    .badge{width:96px;height:96px;right:20px;bottom:76px}
+    .badge-core{inset:24px}.badge-core b{font-size:18px}
+  }
+  @media (max-width:600px){
+    section.block{padding:76px 0}
+    .wrap{padding:0 20px}
+    .nav{height:62px}
+    .brand{gap:10px;font-size:12.5px;letter-spacing:.1em}
+    .brand img{width:34px;height:34px}
+    .nav-link{font-size:12px;letter-spacing:.16em}
+    .hero{min-height:100svh;padding:92px 0 150px;align-items:flex-end}
+    .hero-bg{inset:0;background-position:62% 20%;transform:none}
+    .hero::before{background:linear-gradient(180deg, rgba(27,25,22,.55) 0%, rgba(27,25,22,.35) 28%, rgba(27,25,22,.88) 62%, var(--bg) 100%)}
+    .hero-inner{padding:0 20px}
+    .hero .eyebrow{letter-spacing:.24em;font-size:11px}
+    .hero h1{font-size:clamp(46px,14.5vw,64px);margin:16px 0 8px}
+    .hero .script{font-size:30px}
+    .hero p{font-size:15px;margin-top:14px}
+    .ctas{flex-direction:column;gap:10px;margin-top:26px}
+    .btn{justify-content:center;padding:16px 20px;font-size:12.5px;width:100%}
+    .badge,.scroll-cue{display:none}
+    .marquee span{font-size:12px;padding:14px 0}
+    .marquee i{margin:0 18px}
+    h2{font-size:clamp(32px,9.6vw,42px)}
+    .head .script{font-size:27px}
+    .story-text{font-size:15.5px}
+    .story-stage{margin-top:46px;padding:0 6px}
+    .polaroid{padding:10px 10px 0}
+    .polaroid figcaption{font-size:21px;padding:10px 6px 14px}
+    .scissors{margin-top:56px}
+    .list{margin-top:40px;gap:4px}
+    .item{grid-template-columns:54px 1fr auto;gap:14px;padding:14px 12px;align-items:start}
+    .thumb{width:54px;height:54px;border-width:2px}
+    .item h3{font-size:15.5px;letter-spacing:.03em;line-height:1.2}
+    .item h3::after{display:none}
+    .item p{font-size:13px;line-height:1.5}
+    .price{font-size:21px;line-height:1.1}
+    .price small{font-size:10px;margin-right:2px}
+    .gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin:40px -20px 0;padding:0 20px 6px;scrollbar-width:none}
+    .gallery::-webkit-scrollbar{display:none}
+    .gallery figure,.gallery figure:nth-child(3){display:block;flex:0 0 78%;aspect-ratio:4/5;scroll-snap-align:center}
+    .swipe{display:block}
+    .cards{grid-template-columns:1fr;gap:10px;margin-top:22px}
+    .cards .card:nth-child(3){grid-column:auto}
+    .card{display:grid;grid-template-columns:40px 1fr;column-gap:16px;text-align:left;padding:20px 18px;align-items:start}
+    .card .ico{position:static;transform:none;grid-row:1 / span 3}
+    .card h4{font-size:15px;margin-bottom:4px;letter-spacing:.14em}
+    .card p{font-size:14px;line-height:1.6}
+    .card a.wa{margin-top:6px;font-size:16px}
+    footer{padding:64px 0 150px}
+    .foot-name{font-size:34px}
+    .foot-script{font-size:25px;line-height:1.2;margin-top:10px}
+    .foot-meta{font-size:11px;letter-spacing:.16em;line-height:2}
+    .foot-meta span{display:block}
+    .mbar{display:flex}
+    .wm{font-size:10px;left:50%;transform:translateX(-50%);bottom:76px;padding:4px 12px 4px 4px;white-space:nowrap}
+    .wm svg{width:20px;height:20px}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body class="loading">
+
+<!-- LOADER -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="pole"></div>
+  <div class="loader-name">Gustavo Barber Club</div>
+  <div class="loader-line"></div>
+</div>
+
+<!-- HEADER -->
+<header id="top">
+  <div class="wrap nav">
+    <a href="#inicio" class="brand"><img src="img/logo-circle.jpg" alt="Logo Gustavo Barber Club"><span>Gustavo Barber Club</span></a>
+    <a href="#casa" class="nav-link">A Casa</a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-inner">
+      <div class="eyebrow reveal">Uberlândia · Granada · Desde 2023</div>
+      <h1 class="reveal">Gustavo<span class="l2">Barber <em>Club</em></span></h1>
+      <div class="script reveal">Navalha, régua e respeito</div>
+      <p class="reveal">Corte alinhado, barba bem feita e aquela conversa boa de barbearia de bairro. Aqui o seu horário é tratado com calma e capricho.</p>
+      <div class="ctas reveal">
+        <a class="btn btn-primary" href="https://wa.me/5534998752369?text=Ol%C3%A1%2C%20Gustavo!%20Quero%20agendar%20um%20hor%C3%A1rio." target="_blank" rel="noopener">Agendar horário</a>
+        <a class="btn btn-ghost" href="#casa">Nossa história</a>
+      </div>
+    </div>
+    <div class="badge" aria-hidden="true">
+      <svg viewBox="0 0 120 120"><defs><path id="c" d="M60,60 m-48,0 a48,48 0 1,1 96,0 a48,48 0 1,1 -96,0"/></defs><text fill="#f2df4a" font-family="Oswald" font-size="10.4" font-weight="500" letter-spacing="3.6"><textPath href="#c">NOTA MÁXIMA NO GOOGLE · 26 AVALIAÇÕES ·</textPath></text></svg>
+      <div class="badge-core"><b>5,0</b><small>★★★★★</small></div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true"></div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Corte na régua<i>✦</i>Barba na toalha quente<i>✦</i>Degradê<i>✦</i>Corte infantil<i>✦</i>Depilação nasal<i>✦</i>Pezinho e acabamento<i>✦</i></span>
+      <span>Corte na régua<i>✦</i>Barba na toalha quente<i>✦</i>Degradê<i>✦</i>Corte infantil<i>✦</i>Depilação nasal<i>✦</i>Pezinho e acabamento<i>✦</i></span>
+    </div>
+  </div>
+
+  <!-- STORY -->
+  <section class="block story" id="casa">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="small-script">desde 2023 no bairro</span>
+        <h2>Uma cadeira,<br>um bairro inteiro.</h2>
+      </div>
+      <p class="story-text reveal">A <strong>Gustavo Barber Club</strong> nasceu no Granada com uma ideia simples: fazer cada corte como se fosse o primeiro. Pai, filho e o vizinho da rua de cima sentam na mesma cadeira e saem com o mesmo cuidado. Sem pressa, sem corte no automático.</p>
+      <div class="story-stage reveal">
+        <span class="dot-mark" aria-hidden="true"></span>
+        <figure class="polaroid">
+          <img loading="lazy" src="img/corte-kids.jpg" alt="Cliente mirim sorrindo após o corte na Gustavo Barber Club">
+          <figcaption>“Corto com o Gustavo há 2 anos e sempre saio satisfeito”<small>Victor · cliente no Google</small></figcaption>
+        </figure>
+      </div>
+      <div class="scissors" aria-hidden="true">
+        <svg width="46" height="46" viewBox="0 0 48 48" fill="none" stroke="#f2ece0" stroke-width="1.4"><circle cx="11" cy="14" r="6"/><circle cx="11" cy="34" r="6"/><path d="M16 17 44 36M16 31 44 12"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICE LIST -->
+  <section class="block prices" id="servicos">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow rule">A tabela</span>
+        <span class="script">serviços da casa</span>
+        <h2>Preço justo, mão firme.</h2>
+      </div>
+      <div class="list">
+        <article class="item reveal">
+          <div class="thumb"><img loading="lazy" src="img/corte-fade.jpg" alt="Corte degradê"></div>
+          <div><h3>Corte masculino</h3><p>Tesoura e máquina, degradê na régua e finalização com pomada.</p></div>
+          <div class="price"><small>R$</small>35</div>
+        </article>
+        <article class="item featured reveal">
+          <div class="thumb"><img loading="lazy" src="img/barba.jpg" alt="Barba na toalha quente"></div>
+          <div><h3>Barba completa</h3><p>Toalha quente, navalha, desenho do contorno e óleo hidratante.</p></div>
+          <div class="price"><small>R$</small>30</div>
+        </article>
+        <article class="item reveal">
+          <div class="thumb"><img loading="lazy" src="img/corte-lateral.jpg" alt="Corte e barba"></div>
+          <div><h3>Corte + barba</h3><p>O combo completo para sair alinhado da cabeça ao queixo.</p></div>
+          <div class="price"><small>R$</small>60</div>
+        </article>
+        <article class="item reveal">
+          <div class="thumb"><img loading="lazy" src="img/corte-kids.jpg" alt="Corte infantil"></div>
+          <div><h3>Corte infantil</h3><p>Paciência de sobra para o primeiro corte e os que vêm depois.</p></div>
+          <div class="price"><small>R$</small>30</div>
+        </article>
+      </div>
+      <div class="list-note reveal"><a class="link-under" href="https://wa.me/5534998752369?text=Ol%C3%A1%2C%20Gustavo!%20Quero%20agendar%20um%20hor%C3%A1rio." target="_blank" rel="noopener">Reservar minha cadeira</a></div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="block visit" id="visite">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow rule">Vem pra cadeira</span>
+        <h2 style="margin-top:18px">No coração do Granada</h2>
+      </div>
+      <div class="gallery reveal">
+        <figure><img loading="lazy" src="img/corte-lateral.jpg" alt="Corte degradê com risca"></figure>
+        <figure><img loading="lazy" src="img/depilacao.jpg" alt="Depilação nasal com cera"></figure>
+        <figure><img loading="lazy" src="img/corte-fade.jpg" alt="Acabamento do corte"></figure>
+      </div>
+      <div class="swipe">arraste para o lado →</div>
+      <div class="cards">
+        <div class="card reveal">
+          <span class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg></span>
+          <h4>Onde</h4>
+          <p>Alameda Raul Petronilho Pádua, 404<br>Granada · Uberlândia – MG<br>38408-652</p>
+        </div>
+        <div class="card reveal">
+          <span class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <h4>Horário</h4>
+          <p>Atendimento com hora marcada<br>Aberto até as 20h<br>Chame antes para garantir a vaga</p>
+        </div>
+        <div class="card reveal">
+          <span class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.3-.5 0-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.8-.2 1.5Z"/></svg></span>
+          <h4>Agendamento</h4>
+          <p>Pelo WhatsApp, em poucos segundos</p>
+          <a class="wa" href="https://wa.me/5534998752369?text=Ol%C3%A1%2C%20Gustavo!%20Quero%20agendar%20um%20hor%C3%A1rio." target="_blank" rel="noopener">(34) 99875-2369</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap reveal">
+    <div class="foot-name">Gustavo Barber Club</div>
+    <div class="foot-script">o corte do bairro, feito com capricho</div>
+    <div class="foot-meta"><span>Granada · Uberlândia – MG</span> <span>(34) 99875-2369</span></div>
+  </div>
+</footer>
+
+<!-- BARRA FIXA MOBILE -->
+<nav class="mbar" id="mbar" aria-label="Agendamento rápido">
+  <a href="https://wa.me/5534998752369?text=Ol%C3%A1%2C%20Gustavo!%20Quero%20agendar%20um%20hor%C3%A1rio." target="_blank" rel="noopener">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z"/></svg>Agendar no WhatsApp</a>
+  <a class="call" href="tel:+5534998752369" aria-label="Ligar para a barbearia"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1Z"/></svg></a>
+</nav>
+
+<!-- MARCA D'ÁGUA F9 CODING -->
+<div class="wm" aria-label="Prévia criada por F9 Coding · uso não autorizado">
+  <svg viewBox="0 0 40 40" aria-hidden="true">
+    <defs>
+      <linearGradient id="f9bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f5a45"/><stop offset="1" stop-color="#062b22"/></linearGradient>
+      <linearGradient id="f9glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d4fff0" stop-opacity=".95"/><stop offset="1" stop-color="#7fe3c2" stop-opacity=".75"/></linearGradient>
+    </defs>
+    <circle cx="20" cy="20" r="20" fill="url(#f9bg)"/>
+    <path d="M13 10h15v5h-9.5v3.6H26v5h-7.5V30H13Z" fill="url(#f9glass)" stroke="#fff" stroke-width="1.2" stroke-linejoin="round"/>
+  </svg>
+  <span>Prévia criada por F9 Coding · uso não autorizado</span>
+</div>
+
+<script>
+  // loader
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('loader').classList.add('out');
+      document.body.classList.remove('loading');
+      revealHero();
+    }, 1500);
+  });
+  setTimeout(() => { // fallback
+    document.getElementById('loader').classList.add('out');
+    document.body.classList.remove('loading');
+    revealHero();
+  }, 4000);
+
+  function revealHero(){
+    document.querySelectorAll('.hero .reveal').forEach((el,i)=>setTimeout(()=>el.classList.add('in'), 120*i));
+  }
+
+  // header
+  const header = document.getElementById('top');
+  const onScroll = () => {
+    header.classList.toggle('solid', window.scrollY > 40);
+    document.getElementById('mbar').classList.toggle('show', window.scrollY > window.innerHeight * 0.6);
+    const bg = document.getElementById('heroBg');
+    if (bg && window.scrollY < window.innerHeight) bg.style.transform = `scale(1.04) translateY(${window.scrollY * 0.12}px)`;
+  };
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  // reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.15, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el => { if (!el.closest('.hero')) io.observe(el); });
+</script>
+</body>
+</html>
